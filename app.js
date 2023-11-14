@@ -7,13 +7,13 @@ const path = require("path");
 const publicPath = path.resolve(__dirname, './public');
 app.use( express.static(publicPath));
 
-app.listen(3030,() => 
-console.log("Servidor corriendo")
-);
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/index.html"))
-})
+let port = process.env.port || 3000;
+
+app.listen(port,() => console.log("Servidor"))
+
+console.log("Servidor corriendo")
+
 
 app.get("/home", (req, res) => {
     res.sendFile(path.join(__dirname,"/views/home.html"))
