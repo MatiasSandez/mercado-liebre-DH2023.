@@ -1,25 +1,18 @@
-const { log } = require('console');
 const express = require('express');
+const path = require('path');
 const app = express();
+const port = process.env.PORT || 3000;
 
+app.use(express.static("public")); //Se utiliza para obtener archivos estaticos como pueden ser imagenes o estilos, a traves de una ruta especifica.
 
-const path = require("path");
-const publicPath = path.resolve(__dirname, './public');
-app.use( express.static(publicPath));
+app.listen(port, () => {
+    console.log(`El servidor está escuchando en el puerto ${port}...`);
+});
 
-
-let port = process.env.port || 3000;
-
-app.listen(port,() => console.log("Servidor"))
-
-console.log("Servidor corriendo")
-
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname,"/views/home.html"))
-})
-
-
+// HOME
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './views/home.html'));
+});
 
 
 
