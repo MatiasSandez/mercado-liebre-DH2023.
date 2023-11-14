@@ -15,7 +15,7 @@ app.listen(port,() => console.log("Servidor"))
 console.log("Servidor corriendo")
 
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname,"/views/home.html"))
 })
 
